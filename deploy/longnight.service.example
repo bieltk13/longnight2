@@ -1,0 +1,16 @@
+# Ajuste o usuário e o caminho absoluto do Node antes de instalar.
+[Unit]
+Description=Long Night event platform
+After=network.target
+[Service]
+Type=simple
+User=longnight
+WorkingDirectory=/opt/long-night
+ExecStart=/usr/bin/node --env-file=/opt/long-night/.env /opt/long-night/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+[Install]
+WantedBy=multi-user.target
